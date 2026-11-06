@@ -1,24 +1,74 @@
-{
-  "server": {
-    "name": "LEGENDS MC",
-    "type": "java",
-    "host": "SOON",
-    "port": 19132,
-    "whitelistCount": 30,
+"server": {
+  "name": "LEGENDS MC",
+  "type": "both",
+  "host": "SOON",
+  "javaPort": 25565,
+  "bedrockPort": 19132,
+  "whitelistCount": 30,
     "discordInvite": "https://discord.gg/euXWb8JEc",
     "tiktokUrl": "https://www.tiktok.com/@itslegends_mc"
   },
   "owners": [
-    { "name": "OWNER 1", "image": "assets/owner1.png", "website": "https://medogm.vercel.app/", "showMoreInfo": true },
-    { "name": "OWNER 2", "image": "assets/owner2.png", "website": "https://its3abdo.vercel.app/", "showMoreInfo": true },
-    { "name": "OWNER 3", "image": "assets/owner3.png", "website": "", "showMoreInfo": false },
-    { "name": "OWNER 4", "image": "assets/owner4.png", "website": "", "showMoreInfo": false }
+    {
+      "name": "OWNER 1",
+      "image": "assets/owner1.png",
+      "website": "https://medogm.vercel.app/",
+      "showMoreInfo": true
+    },
+    {
+      "name": "OWNER 2",
+      "image": "assets/owner2.png",
+      "website": "https://its3abdo.vercel.app/",
+      "showMoreInfo": true
+    },
+    {
+      "name": "OWNER 3",
+      "image": "assets/owner3.png",
+      "website": "",
+      "showMoreInfo": false
+    },
+    {
+      "name": "OWNER 4",
+      "image": "assets/owner4.png",
+      "website": "",
+      "showMoreInfo": false
+    }
   ],
   "store": [
-    { "id": "custom-role", "name": "CUSTOM ROLE", "description": "Custom role in server and Discord", "100EG": "Set price", "pointsPrice": 1000 },
-    { "id": "custom-home", "name": "CUSTOM HOME", "description": "A home made for you", "300EG": "Set price", "pointsPrice": 2500 },
-    { "id": "resources", "name": "MORE RESOURCES", "description": "Extra resources for your gameplay", "1EG": "Set price", "pointsPrice":10 },
-    { "id": "custom-skin", "name": "CUSTOM SKIN", "description": "Your own custom skin", "moneyPrice": "500", "pointsPrice": 4000 },
-    { "id": "partner", "name": "PARTNER", "description": "Partner with LEGENDS MC", "moneyPrice": "1000EG", "pointsPrice": 1000 }
+    {
+      "id": "custom-role",
+      "name": "CUSTOM ROLE",
+      "description": "Custom role in server and Discord",
+      "moneyPrice": "100",
+      "pointsPrice": 1000
+    },
+    {
+      "id": "custom-home",
+      "name": "CUSTOM HOME",
+      "description": "A home made for you",
+      "moneyPrice": "300",
+      "pointsPrice": 2500
+    },
+    {
+      "id": "resources",
+      "name": "MORE RESOURCES",
+      "description": "Extra resources for your gameplay",
+      "moneyPrice": "1",
+      "pointsPrice": 10
+    },
+    {
+      "id": "custom-skin",
+      "name": "CUSTOM SKIN",
+      "description": "Your own custom skin",
+      "moneyPrice": "500",
+      "pointsPrice": 4000
+    },
+    {
+      "id": "partner",
+      "name": "PARTNER",
+      "description": "Partner with LEGENDS MC",
+      "moneyPrice": "1000",
+      "pointsPrice": 1000
+    }
   ]
 }
