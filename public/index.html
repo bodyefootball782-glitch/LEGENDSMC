@@ -9,7 +9,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/style.css">
 </head>
-<body>
+<body class="site-locked">
+  <audio id="siteMusic" src="/assets/music.mp3" preload="none" loop></audio>
+  <section class="entry-screen" id="entryScreen" aria-label="Enter LEGENDS MC">
+    <div class="entry-orb orb-one"></div><div class="entry-orb orb-two"></div>
+    <div class="entry-content">
+      <div class="entry-mark">L</div>
+      <p class="entry-kicker">A NEW ADVENTURE AWAITS</p>
+      <h1>LEGENDS <span>MC</span></h1>
+      <p class="entry-caption">YOUR WORLD. YOUR LEGACY.</p>
+      <button class="entry-button" id="enterSite" type="button">JOIN IN BEST MINECRAFT SERVER <span>↗</span></button>
+      <small class="entry-hint" id="entryHint">CLICK TO ENTER • MUSIC ON</small>
+    </div>
+    <div class="entry-bottom">JAVA × BEDROCK · MINECRAFT MULTIPLAYER</div>
+  </section>
+  <button class="music-toggle" id="musicToggle" type="button" aria-label="Mute music" hidden>♫ <span> MUSIC ON</span></button>
   <div class="ambient"></div>
   <header class="topbar">
     <a class="brand" href="#"><span class="brand-mark">L</span><span>LEGENDS <b>MC</b></span></a>
@@ -19,7 +33,7 @@
 
   <main>
     <section class="hero">
-      <video class="hero-video" autoplay muted loop playsinline poster="/assets/video-poster.jpg">
+      <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="/assets/video-poster.jpg">
         <source src="/assets/background.mp4" type="video/mp4">
       </video>
       <div class="hero-shade"></div>
@@ -29,7 +43,8 @@
         <p class="hero-sub">YOUR LEGEND STARTS HERE</p>
         <div class="status-row">
           <span class="status-dot" id="statusDot"></span><span id="statusText">CHECKING SERVER...</span>
-          <span class="status-divider">/</span><span id="playerCount">-- PLAYERS</span>
+          <span class="status-divider">/</span><span id="javaCount">JAVA: --</span>
+          <span class="status-divider">/</span><span id="bedrockCount">BEDROCK: --</span>
           <span class="status-divider">/</span><span id="whitelistCount">-- WHITELISTED</span>
         </div>
         <div class="hero-actions">

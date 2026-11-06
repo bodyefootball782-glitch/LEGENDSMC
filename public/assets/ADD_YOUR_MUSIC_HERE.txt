@@ -1,0 +1,5 @@
+Put your background music file in this folder and name it exactly:
+music.mp3
+
+The entry button starts this music after the visitor clicks it.
+The background video stays muted at all times.

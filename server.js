@@ -10,7 +10,7 @@ const PORT = Number(process.env.PORT || 3000);
 
 app.use(helmet({ contentSecurityPolicy: false }));
 app.use(express.json({ limit: "30kb" }));
-app.use(express.static("public"));
+app.use(express.static(require("path").join(__dirname, "public")));
 app.use("/api/", rateLimit({ windowMs: 60 * 1000, limit: 12, standardHeaders: true, legacyHeaders: false }));
 
 const clean = (v, max = 1000) => String(v ?? "").trim().slice(0, max);
@@ -33,6 +33,10 @@ app.get("/api/config", (_req, res) => {
   res.json({
     server: {
       name: config.server.name,
+      type: config.server.type,
+      host: config.server.host,
+      javaPort: Number(config.server.javaPort || 25565),
+      bedrockPort: Number(config.server.bedrockPort || 19132),
       discordInvite: config.server.discordInvite,
       tiktokUrl: config.server.tiktokUrl,
       whitelistCount: Number(config.server.whitelistCount || 0)
@@ -43,23 +47,28 @@ app.get("/api/config", (_req, res) => {
 });
 
 app.get("/api/status", async (_req, res) => {
-  try {
-    const opts = { timeout: 5000 };
-    const result = config.server.type === "java"
-      ? await statusJava(config.server.host, Number(config.server.port), opts)
-      : await statusBedrock(config.server.host, Number(config.server.port), opts);
-    res.json({
-      online: true,
-      playersOnline: Number(result.players?.online || 0),
-      playersMax: Number(result.players?.max || 0),
-      whitelistCount: Number(config.server.whitelistCount || 0)
-    });
-  } catch {
-    res.json({
-      online: false, playersOnline: 0, playersMax: 0,
-      whitelistCount: Number(config.server.whitelistCount || 0)
-    });
+  const host = String(config.server.host || "").trim();
+  const type = String(config.server.type || "both").toLowerCase();
+  const whitelistCount = Number(config.server.whitelistCount || 0);
+  if (!host || host.toUpperCase() === "SOON") {
+    return res.json({ java: { online: false, playersOnline: 0, playersMax: 0 }, bedrock: { online: false, playersOnline: 0, playersMax: 0 }, whitelistCount });
   }
+  const check = async (edition) => {
+    try {
+      const opts = { timeout: 4500 };
+      const result = edition === "java"
+        ? await statusJava(host, Number(config.server.javaPort || 25565), opts)
+        : await statusBedrock(host, Number(config.server.bedrockPort || 19132), opts);
+      return { online: true, playersOnline: Number(result.players?.online || 0), playersMax: Number(result.players?.max || 0) };
+    } catch {
+      return { online: false, playersOnline: 0, playersMax: 0 };
+    }
+  };
+  const [java, bedrock] = await Promise.all([
+    type === "bedrock" ? Promise.resolve({ online: false, playersOnline: 0, playersMax: 0 }) : check("java"),
+    type === "java" ? Promise.resolve({ online: false, playersOnline: 0, playersMax: 0 }) : check("bedrock")
+  ]);
+  res.json({ java, bedrock, whitelistCount });
 });
 
 app.post("/api/application", async (req, res) => {
@@ -98,4 +107,5 @@ app.post("/api/order", async (req, res) => {
   } catch (e) { res.status(503).json({ error: e.message }); }
 });
 
-app.listen(PORT, () => console.log(`LEGENDS MC website running at http://localhost:${PORT}`));
+if (require.main === module) app.listen(PORT, () => console.log(`LEGENDS MC website running at http://localhost:${PORT}`));
+module.exports = app;
