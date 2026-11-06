@@ -1,9 +1,9 @@
 {
   "server": {
     "name": "LEGENDS MC",
-    "type": "BEDROCK AND JAVA",
+    "type": "java",
     "host": "SOON",
-   "port": 19132,
+    "port": 19132,
     "whitelistCount": 30,
     "discordInvite": "https://discord.gg/euXWb8JEc",
     "tiktokUrl": "https://www.tiktok.com/@itslegends_mc"
