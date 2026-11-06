@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080b12">
+  <meta name="description" content="LEGENDS MC — Your legend starts here.">
+  <title>LEGENDS MC | Minecraft Server</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="ambient"></div>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-mark">L</span><span>LEGENDS <b>MC</b></span></a>
+    <nav><a href="#official">COMMUNITY</a><a href="#store">STORE</a><a href="#owners">OWNERS</a></nav>
+    <a class="discord-small" id="navDiscord" href="#" target="_blank" rel="noreferrer">JOIN DISCORD ↗</a>
+  </header>
+
+  <main>
+    <section class="hero">
+      <video class="hero-video" autoplay muted loop playsinline poster="/assets/video-poster.jpg">
+        <source src="/assets/background.mp4" type="video/mp4">
+      </video>
+      <div class="hero-shade"></div>
+      <div class="hero-content">
+        <div class="eyebrow"><span class="pulse"></span> MINECRAFT MULTIPLAYER EXPERIENCE</div>
+        <h1>LEGENDS <span>MC</span></h1>
+        <p class="hero-sub">YOUR LEGEND STARTS HERE</p>
+        <div class="status-row">
+          <span class="status-dot" id="statusDot"></span><span id="statusText">CHECKING SERVER...</span>
+          <span class="status-divider">/</span><span id="playerCount">-- PLAYERS</span>
+          <span class="status-divider">/</span><span id="whitelistCount">-- WHITELISTED</span>
+        </div>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#applications">SERVER APPLICATIONS <span>↗</span></a>
+          <a class="btn btn-ghost" href="#store">EXPLORE STORE</a>
+        </div>
+        <button class="copy-ip" id="copyIp">SERVER IP: <b id="serverIp">PLAY.YOURSERVER.COM</b> <span>▣ COPY</span></button>
+      </div>
+      <div class="scroll-hint">SCROLL TO EXPLORE <span>↓</span></div>
+    </section>
+
+    <section class="section community" id="official">
+      <div class="section-heading"><span class="kicker">BE PART OF US</span><h2>OFFICIAL <em>COMMUNITY</em></h2><p>Follow our journey and stay connected with the Legends.</p></div>
+      <div class="community-grid">
+        <a class="community-card discord-card" id="discordCard" href="#" target="_blank" rel="noreferrer"><span class="card-icon">◈</span><span><b>DISCORD SERVER</b><small>Join the community</small></span><strong>↗</strong></a>
+        <a class="community-card tiktok-card" id="tiktokCard" href="#" target="_blank" rel="noreferrer"><span class="card-icon">♪</span><span><b>TIKTOK</b><small>Watch our latest content</small></span><strong>↗</strong></a>
+      </div>
+    </section>
+
+    <section class="section applications" id="applications">
+      <div class="section-heading"><span class="kicker">BUILD THE LEGACY</span><h2>JOIN <em>OUR TEAM</em></h2><p>Choose the path that fits you and send your application.</p></div>
+      <div class="application-grid">
+        <button data-category="رقابة">MODERATION <span>↗</span></button>
+        <button data-category="ادمن في السيرفر والديسكورد">ADMIN <span>↗</span></button>
+        <button data-category="بارتنر (FOUNDER)">PARTNER / FOUNDER <span>↗</span></button>
+        <button data-category="مطور (DEV)">DEVELOPER <span>↗</span></button>
+        <button data-category="التقديم على شيء آخر">OTHER <span>↗</span></button>
+      </div>
+    </section>
+
+    <section class="section store" id="store">
+      <div class="section-heading"><span class="kicker">SUPPORT THE SERVER</span><h2>LEGENDS <em>STORE</em></h2><p>Choose your upgrade. Make your adventure yours.</p></div>
+      <div class="store-grid" id="storeGrid"></div>
+    </section>
+
+    <section class="section owners" id="owners">
+      <div class="section-heading"><span class="kicker">THE PEOPLE BEHIND IT</span><h2>MEET THE <em>OWNERS</em></h2><p>The team building the LEGENDS experience.</p></div>
+      <div class="owners-grid" id="ownersGrid"></div>
+    </section>
+  </main>
+  <footer><a class="brand" href="#"><span class="brand-mark">L</span><span>LEGENDS <b>MC</b></span></a><span>© <span id="year"></span> LEGENDS MC. ALL RIGHTS RESERVED.</span><a href="#top">BACK TO TOP ↑</a></footer>
+
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" data-close aria-label="Close">×</button>
+      <span class="kicker">LEGENDS MC</span><h2 id="modalTitle">APPLICATION</h2>
+      <p id="modalDesc">Fill in your details carefully.</p>
+      <form id="applicationForm" class="form">
+        <input type="hidden" name="category" id="applicationCategory">
+        <label>YOUR NAME<input name="name" required maxlength="80" placeholder="Enter your name"></label>
+        <label>YOUR AGE<input name="age" type="number" min="13" max="99" required placeholder="Age"></label>
+        <label>DISCORD EXPERIENCE<textarea name="discordExperience" required maxlength="2500" placeholder="Tell us about your Discord experience..."></textarea></label>
+        <label>MINECRAFT EXPERIENCE<textarea name="minecraftExperience" required maxlength="2500" placeholder="Tell us about your Minecraft experience..."></textarea></label>
+        <label>DEVICE<select name="device" required><option value="">Choose device</option><option>PC</option><option>Phone</option></select></label>
+        <label>PHONE NUMBER<input name="phone" required maxlength="30" placeholder="Phone number"></label>
+        <label>GOVERNORATE<input name="city" required maxlength="80" placeholder="Your governorate"></label>
+        <label>WILL YOU RESPECT THE RULES?<select name="rules" required><option value="">Choose</option><option>Yes</option><option>No</option></select></label>
+        <label>WILL YOU HELP MAKE THE SERVER NUMBER ONE?<select name="goal" required><option value="">Choose</option><option>Yes</option><option>No</option></select></label>
+        <label class="checkline"><input type="checkbox" name="joinedDiscord" required> I have joined the official Discord server.</label>
+        <button class="btn btn-primary submit-btn" type="submit">SUBMIT APPLICATION ↗</button>
+        <div class="form-message" id="applicationMessage" role="status"></div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal" id="orderModal" aria-hidden="true">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="orderTitle">
+      <button class="modal-close" data-close aria-label="Close">×</button>
+      <span class="kicker">LEGENDS STORE</span><h2 id="orderTitle">PLACE AN ORDER</h2><p id="orderProduct"></p>
+      <div class="payment-choice"><button type="button" data-payment="money" class="selected">MONEY</button><button type="button" data-payment="points">POINTS</button></div>
+      <form id="orderForm" class="form">
+        <input type="hidden" name="product" id="orderProductId"><input type="hidden" name="payment" id="paymentMethod" value="money">
+        <label>YOUR NAME<input name="name" required maxlength="80" placeholder="Enter your name"></label>
+        <label>WHATSAPP PHONE<input name="phone" required maxlength="30" placeholder="Phone number"></label>
+        <label>DISCORD USERNAME<input name="discordUser" required maxlength="80" placeholder="@username"></label>
+        <button class="btn btn-primary submit-btn" type="submit">CONFIRM ORDER ↗</button>
+        <div class="form-message" id="orderMessage" role="status"></div>
+      </form>
+    </div>
+  </div>
+  <script src="/app.js"></script>
+</body></html>
